@@ -10,55 +10,64 @@ const menu = [{ //main menu
   message: 'Main Menu',
   name: 'menuChoice',
   choices: ['Add Employee', 'Generate HTML', 'Exit'],
-}, ];
+},];
 
 const questions = [{ //questions list for input
-    type: 'input',
-    name: 'name',
-    message: "What is this persons Name?"
-  },
-  {
-    type: 'input',
-    name: 'id',
-    message: "Employee ID?"
-  },
-  {
-    type: 'input',
-    name: 'email',
-    message: "Employee Email?"
-  },
-  {
-    type: 'list',
-    message: 'Which type of employee are they?',
-    name: 'type',
-    choices: ['Engineer', 'Intern', 'Manager'],
-  },
-  {
-    type: 'input',
-    name: 'github',
-    message: "What is this persons github?",
-    when: (answers) => {
-      if (answers.type === "Engineer") {
-        return true; }}},
-  {
-    type: 'input',
-    name: 'school',
-    message: "Where does this person go to school?",
-    when: (answers) => {
-      if (answers.type === "Intern") {
-        return true; }}},
-  {
-    type: 'input',
-    name: 'officeNumber',
-    message: "What is this persons office phone number?",
-    when: (answers) => {
-      if (answers.type === "Manager") {
-        return true; }}},
+  type: 'input',
+  name: 'name',
+  message: "What is this persons Name?"
+},
+{
+  type: 'input',
+  name: 'id',
+  message: "Employee ID?"
+},
+{
+  type: 'input',
+  name: 'email',
+  message: "Employee Email?"
+},
+{
+  type: 'list',
+  message: 'Which type of employee are they?',
+  name: 'type',
+  choices: ['Engineer', 'Intern', 'Manager'],
+},
+{
+  type: 'input',
+  name: 'github',
+  message: "What is this persons github?",
+  when: (answers) => {
+    if (answers.type === "Engineer") {
+      return true;
+    }
+  }
+},
+{
+  type: 'input',
+  name: 'school',
+  message: "Where does this person go to school?",
+  when: (answers) => {
+    if (answers.type === "Intern") {
+      return true;
+    }
+  }
+},
+{
+  type: 'input',
+  name: 'officeNumber',
+  message: "What is this persons office phone number?",
+  when: (answers) => {
+    if (answers.type === "Manager") {
+      return true;
+    }
+  }
+},
 ];
 
 function init() {
   mainMenu();
-  fs.readFile("src/index.html", "utf8", function(err, data) { // readfile
+  fs.readFile("src/index.html", "utf8", function (err, data) { // readfile
     if (err) {
       throw err
     };
@@ -67,7 +76,7 @@ function init() {
 }
 
 function mainMenu() {
-  inquirer.prompt(menu).then((menuAnswers) => { 
+  inquirer.prompt(menu).then((menuAnswers) => {
     if (menuAnswers.menuChoice === 'Exit') process.exit();
     if (menuAnswers.menuChoice === 'Add Employee') mainQuestions();
     if (menuAnswers.menuChoice === 'Generate HTML') genHMTL(answersArray);
@@ -83,9 +92,9 @@ function mainQuestions() {
 
 function genHMTL() {
   var newHTML;
-  var typeBasedCardText; 
+  var typeBasedCardText;
 
-  for (var x = 0; x < answersArray.length; x++) { 
+  for (var x = 0; x < answersArray.length; x++) {
     switch (answersArray[x].type) { // switch for role/type based input
       case "Engineer":
         typeBasedCardText = (`GitHub: <a href="${answersArray[x].github}">${answersArray[x].github}</a>`);

@@ -1,24 +1,20 @@
-const Intern = require("../lib/Intern.js");
+const { Intern } = require('../lib/Intern');
 
-describe("Intern", () => {
-  const intern = new Intern("Derek", 412, "blah@email.com", "PA");
-  describe("Initialization", () => {
-    it("should create an object with 'name', 'Id' number, 'email', and 'school' ", () => {
-      // Verify that the new object has the correct properties
-      expect(intern.name).toEqual("Derek");
-      expect(intern.id).toEqual(412);
-      expect(intern.email).toEqual("blah@email.com");
-      expect(intern.school).toEqual("PA");
-    });
-  });
-  describe("getRole", () => {
-    it("should return the Interns role", () => {
-      expect(intern.getRole()).toEqual("Intern");
-    });
-  });
-  describe("getSchool", () => {
-    it("should return the Interns School", () => {
-      expect(intern.getSchool()).toEqual(intern.school);
-    });
-  });
-});
+test('Creates new Intern', () => {
+    const employee = new Intern('John Smith', 1234, 'john@smith.com', 'UT');
+
+    expect(employee.name).toBe("John Smith");
+    expect(employee.id).toEqual(expect.any(Number));
+    expect(employee.email).toEqual(expect.any(String));
+    expect(employee.school).toEqual(expect.any(String));
+})
+
+test('Checks all methods for Interns class', () => {
+    const employee = new Intern('John Smith', 1234, 'john@smith.com', 'UT');
+
+    expect(employee.getName()).toBe(employee.name);
+    expect(employee.getId()).toBe(employee.id);
+    expect(employee.getEmail()).toBe(employee.email);
+    expect(employee.getSchool()).toBe(employee.school);
+    expect(employee.getRole()).toBe('Intern');
+})

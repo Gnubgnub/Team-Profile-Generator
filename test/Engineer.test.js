@@ -1,27 +1,20 @@
-const Engineer = require("../lib/Engineer.js");
+const { Engineer } = require('../lib/Engineer');
 
+test('Creates new Engineer', () => {
+  const employee = new Engineer('John Smith', 1234, 'john@smith.com', 'john-smith');
 
-describe("Engineer", () => {
-  const engineer = new Engineer("pgpguru", 412, "pgpguru@email.com", "github");
-  describe("Initialization", () => {
-    it("should create an object with 'name', 'Id' number, 'email', and 'github' ", () => {
-      // Verify that the new object has the correct properties
-      //expect(employee).toEqual({ Employee: [], name: "Derek" , id: "412", email:"blah@email.com", github:"github" });
-      expect(engineer.name).toEqual("pgpguru");
-      expect(engineer.id).toEqual(412);
-      expect(engineer.email).toEqual("pgpguru@email.com");
-      expect(engineer.github).toEqual("github");
+  expect(employee.name).toBe("John Smith");
+  expect(employee.id).toEqual(expect.any(Number));
+  expect(employee.email).toEqual(expect.any(String));
+  expect(employee.github).toEqual(expect.any(String));
+})
 
-    });
-  });
-  describe("getRole", () => {
-    it("should return the Engineer's role", () => {
-      expect(engineer.getRole()).toEqual("Engineer");
-    });
-  });
-  describe("getGithub", () => {
-    it("should return the Engineer's Github", () => {
-      expect(engineer.getGithub()).toEqual(engineer.github);
-    });
-  });
-});
+test('Checks all methods for Engineer class', () => {
+  const employee = new Engineer('John Smith', 1234, 'john@smith.com', 'john-smith');
+
+  expect(employee.getName()).toBe(employee.name);
+  expect(employee.getId()).toBe(employee.id);
+  expect(employee.getEmail()).toBe(employee.email);
+  expect(employee.getGithub()).toBe(employee.github);
+  expect(employee.getRole()).toBe('Engineer');
+})

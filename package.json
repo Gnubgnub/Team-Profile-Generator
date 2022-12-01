@@ -1,11 +1,11 @@
 {
   "name": "HW10-Team-Profile-Generator",
   "version": "1.0.0",
-  "description": "## Your Task",
+  "description": "## Team Generator",
   "main": "index.js",
   "directories": {
     "lib": "lib",
-    "test": "tests"
+    "test": "test"
   },
   "scripts": {
     "test": "jest"
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Gnubgnub/Team-Profile-Generator#readme",
   "dependencies": {
     "inquirer": "^8.1.2",
-    "jest": "^27.0.6"
-  },
-  "devDependencies": {}
+    "jest": "^27.0.6",
+    "node": "^19.1.0"
+  }
 }
